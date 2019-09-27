@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  db-mysql:
+    container_name: dbsql
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql
+    restart: always
+
+  crud-app:
+    container_name: crudapp
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    depends_on:
+      - db-mysql
+    ports:
+      - "5005:5005"
+    restart: always
