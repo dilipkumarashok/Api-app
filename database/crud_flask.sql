@@ -21,14 +21,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE DATABASE IF NOT EXISTS `SampleDB`;
-USE `SampleDB`;
 
 
--- --------------------------------------------------------
+CREATE USER IF NOT EXISTS 'dev'@'localhost' IDENTIFIED BY 'dev';
 
+-- -------------------------------------------------------
+GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
 --
 -- Table structure for table `tbl_user`
 --
+
+
+USE `SampleDB`;
 
 CREATE TABLE IF NOT EXISTS `tbl_user` (
   `username` varchar(255) NOT NULL,
@@ -37,4 +43,5 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 
-INSERT into TABLE tbl_user values ('dilip','dilip@dilip.com','sahfasgja');
+INSERT into TABLE tbl_user VALUES ("dilip","dilip@dilip.com","sahfasgja");
+commit;

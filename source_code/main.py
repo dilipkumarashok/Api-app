@@ -3,7 +3,7 @@ import pymysql
 #from db_config import mysql
 from flask import jsonify
 from flask import flash, request
-from werkzeug import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from flask import Flask
 
@@ -44,7 +44,7 @@ def add_user():
                         #do not save password as a plain text
                         _hashed_password = generate_password_hash(_password)
                         # save edits
-                        sql = "INSERT INTO tbl_user(user_name, user_email, user_password) VALUES(%s, %s, %s)"
+                        sql = "INSERT INTO tbl_user(username, user_email, user_password) VALUES(%s, %s, %s)"
                         data = (_name, _email, _hashed_password,)
                         conn = mysql.connect()
                         cursor = conn.cursor(pymysql.cursors.DictCursor)
