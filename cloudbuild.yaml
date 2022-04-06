@@ -1,0 +1,6 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-f','Dockerfile-app','-t', 'gcr.io/$PROJECT_ID/crud-app_pod:$TAG_NAME', '.']
+  # push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/crud-app_pod:$TAG_NAME']
