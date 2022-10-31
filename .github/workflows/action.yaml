@@ -9,5 +9,7 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Build the Docker image of python flaskapp
+      run: docker build . --file Dockerfile-app --tag dilipkumarashok:flaskapp:$(date +%s)
+    - name: Build the Docker image of mysql
+      run: docker build . --file Dockerfile-mysql --tag dilipkumarashok:mysqldb:$(date +%s)
